@@ -69,6 +69,8 @@ data.forEach(function(data) {
 //     });
 //   });
 
+
+
 function eventTracker(){
     // Sets value property of the the input tag 
     var input = d3.select("input").property("value"); 
@@ -79,7 +81,8 @@ function eventTracker(){
     
     //This clears out the previous cache of rows of data/sightings so that only the new ones freshly in the "result" 
     //bucket can be displayed on the page. If we don't do this, then the "result" bucket returns will just append
-    //on to the bottom of the list, not in their own list.
+    //on to the bottom of the list, not in their own list. It has to be inside the eventTracker function or else
+    //it will empty out all the tbody data and the page display will be empty, too.
     tbody.html("");
 
 //This is a function that populates the "results" bucket returns into the freshly-emptied "tbody" and sends it
