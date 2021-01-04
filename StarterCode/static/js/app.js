@@ -61,13 +61,13 @@ data.forEach(function(data) {
 });
 
 // BONUS: Refactor to use Arrow Functions!
-// data.forEach((data) => {
-//     var row = tbody.append("tr");
-//     Object.entries(data).forEach(([key, value]) => {
-//       var cell = row.append("td");
-//       cell.text(value);
-//     });
-//   });
+data.forEach((data) => {
+    var row = tbody.append("tr");
+    Object.entries(data).forEach(([key, value]) => {
+      var cell = row.append("td");
+      cell.text(value);
+    });
+  });
 
 
 
@@ -77,8 +77,15 @@ function eventTracker(){
     //var text = document.querySelector("input"); 
 
     //Checks to see if the data in each row is the same as the input. If it is, it goes into the "result" bucket. 
-    var result = data.filter(d => d.datetime === input );
+    if (input === "") {
+        var result = data;        
+    } else {
+        var result = data.filter(d => d.datetime === input );
+    };
     
+    var placeholder="1/11/2011"
+
+    var reset = data.filter(d => d.datetime === placeholder );
     //This clears out the previous cache of rows of data/sightings so that only the new ones freshly in the "result" 
     //bucket can be displayed on the page. If we don't do this, then the "result" bucket returns will just append
     //on to the bottom of the list, not in their own list. It has to be inside the eventTracker function or else
@@ -88,23 +95,20 @@ function eventTracker(){
 //This is a function that populates the "results" bucket returns into the freshly-emptied "tbody" and sends it
 //to populate the web page. 
     result.forEach(function(result) {
-        // console.log(data);
+        
         var row = tbody.append("tr");
         Object.entries(result).forEach(function([key, value]) {
-        //   console.log(key, value);
+        
           // Append a cell to the row for each value
           // in the UFO report object
           var cell = row.append("td");
           cell.text(value);
         });
+        
       });
-
-    // console.log(result);
-
-    // Value from input  
-    //console.log(text.value);
+      };
     
-}
+
 d3.selectAll("#filter-btn").on("click", eventTracker);
 
 
