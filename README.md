@@ -1,5 +1,4 @@
-# javascript-challenge
-Aliens-R-Real!
+Aliens-R-Real! An exploration of html and js to display information on a webpage.
 
 Aliens R Real and so is this javascript code! ("The category is...UFO Realness!")
 
